@@ -86,6 +86,31 @@
       color: var(--gold);
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-gift {
+      display: inline-block;
+      padding: 0.6rem 1.6rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-gift:hover {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
     .nav-cta {
       display: inline-block;
       padding: 0.6rem 1.6rem;
@@ -643,7 +668,10 @@
         <span>Sushi Houston</span>
       </span>
     </a>
-    <a href="https://kaisentoast.kaisenhtx.com/" target="_blank" class="nav-cta">Order Now</a>
+    <div class="nav-actions">
+      <a href="https://order.toasttab.com/egiftcards/kaisen-sushi-htx-2616-blodgett-st-k7" target="_blank" class="nav-gift">Gift Cards</a>
+      <a href="https://kaisentoast.kaisenhtx.com/" target="_blank" class="nav-cta">Order Now</a>
+    </div>
   </nav>
 
   <!-- HERO -->
