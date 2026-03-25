@@ -930,17 +930,32 @@
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    // Aggressive video autoplay for iOS/Android
+    // Aggressive video autoplay with Low Power Mode fallback
     const video = document.querySelector('.hero-video');
+    const hero = document.querySelector('.hero');
+
+    function showPosterFallback() {
+      // Hide video, use poster as full-bleed background instead
+      video.style.display = 'none';
+      hero.style.backgroundImage = `url('${video.poster}')`;
+      hero.style.backgroundSize = 'cover';
+      hero.style.backgroundPosition = 'center';
+    }
 
     function playVideo() {
       const promise = video.play();
       if (promise !== undefined) {
         promise.catch(() => {
-          // Autoplay blocked — retry on any user interaction
-          const events = ['touchstart', 'touchend', 'click', 'scroll'];
+          // Autoplay blocked (Low Power Mode or browser policy)
+          // Show poster fallback immediately — looks intentional
+          showPosterFallback();
+
+          // Still try to recover on first user interaction
+          const events = ['touchstart', 'touchend', 'click'];
           const retry = () => {
-            video.play();
+            video.style.display = '';
+            hero.style.backgroundImage = '';
+            video.play().catch(() => showPosterFallback());
             events.forEach(e => document.removeEventListener(e, retry));
           };
           events.forEach(e => document.addEventListener(e, retry, { once: true }));
@@ -948,15 +963,15 @@
       }
     }
 
-    // Try immediately
+    // Try immediately on load
     playVideo();
 
-    // Also try on page visibility change (handles tab switching)
+    // Retry on visibility change (tab switching)
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) playVideo();
     });
 
-    // Try on first scroll (catches iOS lazy load)
+    // Retry on first scroll
     window.addEventListener('scroll', playVideo, { once: true });
   </script>
 </body>
