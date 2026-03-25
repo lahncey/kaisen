@@ -192,21 +192,39 @@
 
     .hero-btn {
       display: inline-block;
-      padding: 1rem 3rem;
-      background: var(--gold);
-      color: var(--ink);
+      padding: 1.1rem 3.5rem;
+      background: transparent;
+      border: 1px solid var(--cream);
+      color: var(--cream);
       font-family: 'Outfit', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.25em;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: all 0.35s ease;
+      position: relative;
+    }
+
+    .hero-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+      z-index: -1;
     }
 
     .hero-btn:hover {
-      background: var(--cream);
+      border-color: var(--gold);
+      color: var(--ink);
       transform: translateY(-2px);
+    }
+
+    .hero-btn:hover::before {
+      transform: scaleX(1);
     }
 
     .hero-scroll {
@@ -242,55 +260,72 @@
 
     /* ── CREDIBILITY ── */
     .credibility {
-      padding: 5rem 3rem;
-      border-top: 1px solid rgba(200,169,110,0.12);
-      border-bottom: 1px solid rgba(200,169,110,0.12);
+      padding: 6rem 3rem;
+      border-top: 1px solid rgba(200,169,110,0.2);
+      border-bottom: 1px solid rgba(200,169,110,0.2);
+      background: linear-gradient(to bottom, rgba(200,169,110,0.03), transparent);
     }
 
     .cred-inner {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 0;
     }
 
     .cred-item {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem 2.5rem;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .cred-item:not(:last-child)::after {
       content: '';
       position: absolute;
       right: 0;
-      top: 20%;
-      height: 60%;
+      top: 15%;
+      height: 70%;
       width: 1px;
-      background: rgba(200,169,110,0.2);
+      background: linear-gradient(to bottom, transparent, rgba(200,169,110,0.3), transparent);
     }
 
     .cred-icon {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
       color: var(--gold);
+      line-height: 1;
+    }
+
+    .cred-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
     }
 
     .cred-label {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
       font-weight: 400;
       color: var(--cream);
-      margin-bottom: 0.4rem;
-      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.03em;
+      line-height: 1.3;
     }
 
     .cred-sub {
       font-size: 0.65rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--muted);
+      line-height: 1.6;
     }
 
     /* ── HOURS ── */
@@ -331,7 +366,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 0;
+      padding: 1.4rem 0;
       border-bottom: 1px solid rgba(200,169,110,0.1);
     }
 
@@ -340,23 +375,23 @@
     }
 
     .hours-day {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted);
-      width: 120px;
+      width: 140px;
     }
 
     .hours-times {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 0.2rem;
+      gap: 0.3rem;
     }
 
     .hours-time {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
+      font-size: 1.4rem;
       color: var(--cream);
       letter-spacing: 0.05em;
     }
@@ -497,6 +532,17 @@
       color: var(--gold);
     }
 
+    .footer-ig {
+      display: flex;
+      align-items: center;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-ig:hover {
+      color: var(--gold) !important;
+    }
+
     .footer-copy {
       font-size: 0.6rem;
       letter-spacing: 0.1em;
@@ -524,8 +570,11 @@
       }
 
       .cred-item {
-        border-bottom: 1px solid rgba(200,169,110,0.1);
+        border-bottom: 1px solid rgba(200,169,110,0.15);
+        padding: 2.5rem 1.5rem;
       }
+
+      .hours-time { font-size: 1.2rem; }
 
       .hours-inner { max-width: 100%; }
 
@@ -571,18 +620,21 @@
     <div class="cred-inner">
       <div class="cred-item">
         <div class="cred-icon">✦</div>
-        <p class="cred-label">2026 CultureMap Tastemaker</p>
-        <p class="cred-sub">Nominee — Houston</p>
+        <p class="cred-number">2026</p>
+        <p class="cred-label">CultureMap Tastemaker Nominee</p>
+        <p class="cred-sub">Houston's most celebrated<br>emerging restaurants</p>
       </div>
       <div class="cred-item">
         <div class="cred-icon">✦</div>
-        <p class="cred-label">Bluefin & Premium Sourced Fish</p>
-        <p class="cred-sub">Fresh. Never compromised.</p>
+        <p class="cred-number">A5</p>
+        <p class="cred-label">Premium & Bluefin Sourced Fish</p>
+        <p class="cred-sub">Fresh. Never frozen.<br>Never compromised.</p>
       </div>
       <div class="cred-item">
         <div class="cred-icon">✦</div>
-        <p class="cred-label">Takeout & Delivery Only</p>
-        <p class="cred-sub">Ghost Kitchen · No waitlist</p>
+        <p class="cred-number">HTX</p>
+        <p class="cred-label">Third Ward's Only Sushi Ghost Kitchen</p>
+        <p class="cred-sub">No tables. No waitlist.<br>Just Houston's best sushi.</p>
       </div>
     </div>
   </section>
@@ -667,9 +719,15 @@
     <div class="footer-inner">
       <p class="footer-brand">Kaisen Sushi Houston</p>
       <div class="footer-links">
-        <a href="https://www.instagram.com/kaisenhtx/" target="_blank">Instagram</a>
+        <a href="https://www.instagram.com/kaisenhtx/" target="_blank" class="footer-ig" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
         <a href="tel:8322602080">832-260-2080</a>
-        <a href="mailto:Sunny@KaisenHTX.com">Contact</a>
+        <a href="mailto:Sunny@KaisenHTX.com">Sunny@KaisenHTX.com</a>
         <a href="https://kaisentoast.kaisenhtx.com/" target="_blank" class="nav-cta" style="font-size:0.6rem; padding: 0.45rem 1.1rem;">Order Now</a>
       </div>
     </div>
