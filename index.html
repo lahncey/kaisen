@@ -330,7 +330,7 @@
 
     /* ── HOURS ── */
     .hours {
-      padding: 6rem 3rem;
+      padding: 6rem 3rem 3rem;
     }
 
     .hours-inner {
@@ -405,28 +405,36 @@
     }
 
     .hours-location {
-      margin-top: 3rem;
+      margin-top: 2.5rem;
       text-align: center;
-      padding: 1.5rem;
-      border: 1px solid rgba(200,169,110,0.15);
+      padding: 2rem 2.5rem;
+      border: 1px solid rgba(200,169,110,0.2);
     }
 
     .hours-location p {
-      font-size: 0.65rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      line-height: 2;
+    }
+
+    .hours-location .loc-sub {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted);
-      line-height: 1.8;
     }
 
     .hours-location strong {
-      color: var(--cream);
+      color: var(--gold);
       font-weight: 400;
     }
 
     /* ── ORDER CTA ── */
     .order-cta {
-      padding: 7rem 3rem;
+      padding: 4rem 3rem 7rem;
       text-align: center;
       background: linear-gradient(to bottom, var(--ink), #111008, var(--ink));
       position: relative;
@@ -492,12 +500,12 @@
 
     /* ── FOOTER ── */
     footer {
-      padding: 3rem;
-      border-top: 1px solid rgba(200,169,110,0.12);
+      padding: 2rem 3rem;
+      border-top: 1px solid rgba(200,169,110,0.2);
     }
 
     .footer-inner {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -508,8 +516,8 @@
 
     .footer-brand {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
-      color: var(--muted);
+      font-size: 1.1rem;
+      color: var(--cream);
       letter-spacing: 0.1em;
     }
 
@@ -520,10 +528,10 @@
     }
 
     .footer-links a {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--cream);
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -535,7 +543,7 @@
     .footer-ig {
       display: flex;
       align-items: center;
-      color: var(--muted);
+      color: var(--cream);
       transition: color 0.2s;
     }
 
@@ -544,12 +552,12 @@
     }
 
     .footer-copy {
-      font-size: 0.6rem;
+      font-size: 0.7rem;
       letter-spacing: 0.1em;
-      color: rgba(154,144,137,0.4);
+      color: var(--muted);
       text-align: center;
-      margin-top: 2rem;
-      max-width: 900px;
+      margin-top: 1.25rem;
+      max-width: 1100px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -700,7 +708,7 @@
       <div class="hours-location">
         <p>
           <strong>Blodgett Food Hall</strong><br>
-          2616 Blodgett St #K7 · Houston, TX · Third Ward<br>
+          <span class="loc-sub">2616 Blodgett St #K7 · Houston, TX · Third Ward</span><br>
           <strong>Pickup & Delivery Available</strong>
         </p>
       </div>
